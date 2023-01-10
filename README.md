@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/myllnvsqr2sjdtms?svg=true)](https://ci.appveyor.com/project/yapparovalili/2-1-web-interface-testing)
