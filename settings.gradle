@@ -1,0 +1,3 @@
+rootProject.name = 'Web-Interface-Testing-2.1'
+include 'artifacts'
+
