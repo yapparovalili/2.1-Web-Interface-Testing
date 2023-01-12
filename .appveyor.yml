@@ -1,4 +1,4 @@
-image: headless  # образ для сборки
+image: Ubuntu  # образ для сборки
 
 stack: jdk 11
 
