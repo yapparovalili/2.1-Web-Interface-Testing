@@ -19,7 +19,7 @@ public class AppOrderPositiveTest {
 
     @BeforeAll
     public static void setup() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\79539\\chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
     }
 
 
@@ -41,7 +41,6 @@ public class AppOrderPositiveTest {
 
     @Test
     public void shouldTestPositivePath1() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Иванова Анна");
         driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+78005553535");
         driver.findElement(By.cssSelector("label[data-test-id=agreement]")).click();
@@ -53,7 +52,6 @@ public class AppOrderPositiveTest {
 
     @Test
     public void shouldTestPositivePath2() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Шевчук-Савченко Юлия");
         driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+79677777777");
         driver.findElement(By.cssSelector("label[data-test-id=agreement]")).click();
@@ -65,7 +63,6 @@ public class AppOrderPositiveTest {
 
     @Test
     public void shouldTestPositivePath3() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Орудж бей Байат");
         driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+71111111111");
         driver.findElement(By.cssSelector("label[data-test-id=agreement]")).click();
