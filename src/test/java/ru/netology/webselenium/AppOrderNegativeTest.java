@@ -1,6 +1,5 @@
 package ru.netology.webselenium;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,10 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AppOrderPositiveTest {
+public class AppOrderNegativeTest {
 
     private WebDriver driver;
 
@@ -40,38 +38,39 @@ public class AppOrderPositiveTest {
     }
 
     @Test
-    public void shouldTestPositivePath1() {
+    public void shouldTestNegativePath1() {
         driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Иванова Анна");
-        driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+78005553535");
+        driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+780055");
         driver.findElement(By.cssSelector("label[data-test-id=agreement]")).click();
         driver.findElement(By.className("button")).click();
-        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
-        String actual = driver.findElement(By.cssSelector("p[data-test-id=order-success]")).getText().trim();
+        String expected = "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.";
+        String actual = driver.findElement(By.cssSelector(".input_invalid[data-test-id=name] span.input__sub")).getText().trim();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldTestPositivePath2() {
+    public void shouldTestNegativePath2() {
         driver.get("http://localhost:9999");
-        driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Шевчук-Савченко Юлия");
+        driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Петр Петров123");
         driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+79677777777");
         driver.findElement(By.cssSelector("label[data-test-id=agreement]")).click();
         driver.findElement(By.className("button")).click();
-        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
-        String actual = driver.findElement(By.cssSelector("p[data-test-id=order-success]")).getText().trim();
+        String expected = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
+        String actual = driver.findElement(By.cssSelector(".input_invalid[data-test-id=name] span.input__sub")).getText().trim();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldTestPositivePath3() {
+    public void shouldTestNegativePath3() {
         driver.get("http://localhost:9999");
-        driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Орудж бей Байат");
-        driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+71111111111");
+        driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Петров Петр");
+        driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("");
         driver.findElement(By.cssSelector("label[data-test-id=agreement]")).click();
         driver.findElement(By.className("button")).click();
-        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
-        String actual = driver.findElement(By.cssSelector("p[data-test-id=order-success]")).getText().trim();
+        String expected = "Поле обязательно для заполнения";
+        String actual = driver.findElement(By.cssSelector(".input_invalid[data-test-id=name] span.input__sub")).getText().trim();
         assertEquals(expected, actual);
     }
 }
+
