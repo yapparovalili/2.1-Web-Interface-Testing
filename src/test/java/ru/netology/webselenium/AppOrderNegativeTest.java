@@ -45,7 +45,7 @@ public class AppOrderNegativeTest {
         driver.findElement(By.cssSelector("label[data-test-id=agreement]")).click();
         driver.findElement(By.className("button")).click();
         String expected = "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.";
-        String actual = driver.findElement(By.cssSelector(".input_invalid[data-test-id=name] span.input__sub")).getText().trim();
+        String actual = driver.findElement(By.cssSelector(".input_invalid[data-test-id=phone] span.input__sub")).getText().trim();
         assertEquals(expected, actual);
     }
 
@@ -67,13 +67,12 @@ public class AppOrderNegativeTest {
         driver.findElement(By.cssSelector("label[data-test-id=agreement]")).click();
         driver.findElement(By.className("button")).click();
         String expected = "Поле обязательно для заполнения";
-        String actual = driver.findElement(By.cssSelector(".input_invalid[data-test-id=name] span.input__sub")).getText().trim();
+        String actual = driver.findElement(By.cssSelector(".input_invalid[data-test-id=phone] span.input__sub")).getText().trim();
         assertEquals(expected, actual);
     }
 
     @Test
     public void shouldTestNegativePath4() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Сергей Иванов");
         driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+7913-848-35-83");
         driver.findElement(By.cssSelector("label[data-test-id=agreement]")).click();
@@ -85,7 +84,6 @@ public class AppOrderNegativeTest {
 
     @Test
     public void shouldTestNegativePath5() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Анна Иванова");
         driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("Номер");
         driver.findElement(By.cssSelector("label[data-test-id=agreement]")).click();
@@ -97,7 +95,6 @@ public class AppOrderNegativeTest {
 
     @Test
     public void shouldTestNegativePath6() {
-        driver.get("http://localhost:9999");
         driver.findElement(By.cssSelector("span[data-test-id=name] input")).sendKeys("Иван Иванов");
         driver.findElement(By.cssSelector("span[data-test-id=phone] input")).sendKeys("+78005553535");
         //driver.findElement(By.cssSelector("label[data-test-id=agreement]")).click();
